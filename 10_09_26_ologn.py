@@ -41,7 +41,7 @@ all_games = df.to_dict("records")
 sorted_games = merge_sort(all_games, "DIFF_POINTS")
 
 # Mostrar el Top 10 de palizas de toda la historia
-print("--- TOP 10 PALIZAS HISTÓRICAS (Merge Sort O(n log n)) ---")
+print(" TOP 10 PALIZAS HISTÓRICAS (Merge Sort O(n log n)) ")
 for g in sorted_games[:10]:
     print(
         f"Fecha: {g['GAME_DATE_EST']} | Diferencia: {g['DIFF_POINTS']} pts ({g['PTS_home']} - {g['PTS_away']})"
