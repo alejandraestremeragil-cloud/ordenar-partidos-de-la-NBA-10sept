@@ -1,1 +1,34 @@
-print("hola")
+import pandas as pd
+df = pd.read_csv("games.csv")
+
+# Crear las columnas necesarias
+df["TOTAL_POINTS"] = df["PTS_home"] + df["PTS_away"]
+df["POINT_DIFF"] = (df["PTS_home"] - df["PTS_away"]).abs()
+
+# Convertir a lista de diccionarios
+games_list = df.to_dict("records")
+
+# Usamos una muestra pequeña (1.000 registros) porque O(n²) con 50.000 registros tardaría demasiado
+sample = games_list[:1000]
+
+
+# 3. Función Bubble Sort (Algoritmo O(n²))
+def bubble_sort(arr, key):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j][key] < arr[j + 1][key]:  # Orden descendente
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+
+print(" ORDENANDO CON BUBBLE SORT O(n²) ")
+
+# Mayores palizas (diferencia de puntos)
+sorted_blowouts = bubble_sort(sample, "POINT_DIFF")
+
+print("\nTop 10 mayores palizas:")
+for g in sorted_blowouts[:10]:
+    print(
+        f"{g['GAME_DATE_EST']}: {g['PTS_home']} - {g['PTS_away']} (Diferencia: {g['POINT_DIFF']} pts)"
+    )
