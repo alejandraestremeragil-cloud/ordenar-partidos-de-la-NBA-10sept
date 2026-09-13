@@ -21,7 +21,7 @@ def bubble_sort(arr, key):
 sorted_games = bubble_sort(sample, "DIFF_POINTS")
 
 # Mostrar las 10 mayores palizas
-print("--- TOP 10 PALIZAS HISTÓRICAS (Bubble Sort O(n^2)) ---")
+print(" TOP 10 PALIZAS HISTÓRICAS (Bubble Sort O(n^2)) ")
 for g in sorted_games[:10]:
     print(
         f"Fecha: {g['GAME_DATE_EST']} | Diferencia: {g['DIFF_POINTS']} pts ({g['PTS_home']} - {g['PTS_away']})"
