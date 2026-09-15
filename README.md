@@ -17,4 +17,4 @@ Ventaja de eficiencia: El número de operaciones crece de forma muy lenta. Para 
 3. Conclusión:
 
 Con O(n^2), el ordenador tarda minutos u horas en procesar listas grandes.
-Con O(n \log n), procesa exacto el mismo volumen de datos en menos de un segundo.
+Con O(n log n), procesa exacto el mismo volumen de datos en menos de un segundo.
