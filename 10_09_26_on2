@@ -1,11 +1,11 @@
 import pandas as pd
 df = pd.read_csv("games.csv")
 
-# Crear las columnas de diferencias y total de puntos
+# Columnas de diferencias y total de puntos
 df["TOTAL_POINTS"] = df["PTS_home"] + df["PTS_away"]
 df["DIFF_POINTS"] = (df["PTS_home"] - df["PTS_away"]).abs()
 
-# Tomamos una muestra de 1000 registros para que Bubble Sort
+# Tomamos una muestra de 1000 registros
 sample = df.head(1000).to_dict("records")
 
 def bubble_sort(arr, key):
