@@ -1,19 +1,19 @@
 import pandas as pd
-df = pd.read_csv("games.csv")
+df = pd.read_csv("games.csv")  #lee el csv y lo guarda en un dataframe
 
 # Columnas de diferencias y total de puntos
 df["TOTAL_POINTS"] = df["PTS_home"] + df["PTS_away"]
 df["DIFF_POINTS"] = (df["PTS_home"] - df["PTS_away"]).abs()
 
-# Tomamos una muestra de 1000 registros
+# Tomamos una muestra de 1000 registros y transformamos a lista de diccionarios
 sample = df.head(1000).to_dict("records")
 
-def bubble_sort(arr, key):
-    n = len(arr)
+def bubble_sort(arr, key):  #definimos la clave por la que se va a ordenar
+    n = len(arr)    # guarda el número total de elementos en la variable n 
     for i in range(n):
-        for j in range(0, n - i - 1):
-            if arr[j][key] < arr[j + 1][key]:  # Orden descendente
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        for j in range(0, n - i - 1):   # bucle interno que recorre los elementos de al lado, se reduce en -i cada iteración porque los elementos se van recolocando
+            if arr[j][key] < arr[j + 1][key]:  # compara si el valor del partido actual es menor que el siguiente, eso significaría que no están en orden descendente
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]  #intercambia las posiciones de ambos elementos en una sola línea
     return arr
 
 
@@ -22,7 +22,7 @@ sorted_games = bubble_sort(sample, "DIFF_POINTS")
 
 # Mostrar las 10 mayores palizas
 print(" TOP 10 PALIZAS HISTÓRICAS (Bubble Sort O(n^2)) ")
-for g in sorted_games[:10]:
+for g in sorted_games[:10]:  # bucle que itera sobre los primeros 10 elementos de la lista ordenada
     print(
         f"Fecha: {g['GAME_DATE_EST']} | Diferencia: {g['DIFF_POINTS']} pts ({g['PTS_home']} - {g['PTS_away']})"
     )
